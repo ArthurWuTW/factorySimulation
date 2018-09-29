@@ -14,19 +14,19 @@ namespace Project
     public partial class Form1 : Form
     {
 
-        List<Node> allNode = new List<Node>();
+        List<Node> System = new List<Node>();
         
 
         public Node GetNodebyName(char name)
         {
-            //return reference
-            return allNode.FirstOrDefault(c => c.name == name);
+            //return reference object Node
+            return System.FirstOrDefault(c => c.name == name);
         }
 
         public Node GetNodebyTime(double time)
         {
-            //return reference
-            return allNode.FirstOrDefault(c => c.eventTime == time);
+            //return reference object Node
+            return System.FirstOrDefault(c => c.eventTime == time);
         }
 
         public double getRandom()
@@ -39,24 +39,20 @@ namespace Project
         public Form1()
         {
             InitializeComponent();
-            //Node ff;
 
-            double stoptime = 30;
+            double stoptime = 30; //release module: stop relaease time 
+            System.Add(new Node(2, 1, 'W')); // washing machine W
+            System.Add(new Node(1, 1, 'P')); // press machines P
+            System.Add(new Node(1, 1, 'A')); // assembly machines Y
+            double gen_time=0.0; // release time
 
-            allNode.Add(new Node(2, 1, 'W'));
-            allNode.Add(new Node(1, 1, 'P'));
-            allNode.Add(new Node(1, 1, 'A'));
-            double gen_time=0.0;
-
-            //ff = GetNodebyName('W');
-            //ff.name = 'F';
-            while (allNode.Min(r => r.eventTime) != int.MaxValue || gen_time != int.MaxValue)
+            while (System.Min(r => r.eventTime) != int.MaxValue || gen_time != int.MaxValue)
             {
                 if (gen_time < stoptime)
                 {
                     gen_time = gen_time + getRandom();
                     Client client_gen = new Client(gen_time);
-                    GetNodebyName('W').AddClient(client_gen);
+                    GetNodebyName('W').AddClient(client_gen); //W Node Add client_gen
                 }
                 else
                 {
@@ -64,20 +60,26 @@ namespace Project
                 }
 
                 //Node Event
-                if(GetNodebyTime(allNode.Min(r => r.eventTime)) != null && allNode.Min(r => r.eventTime) < gen_time)
+
+                // if the Node whose time equals to the eventTime && the time earlier than release time
+                if (GetNodebyTime(System.Min(r => r.eventTime)) != null && System.Min(r => r.eventTime) < gen_time)
                 {
-                    char next_Node_name = GetNodebyTime(allNode.Min(r => r.eventTime)).getTempNextNodeName();
+                    // earn the materials next path
+                    char next_Node_name = GetNodebyTime(System.Min(r => r.eventTime)).getTempNextNodeName();
+                    // if not an End
                     if (next_Node_name != 'E')  // 'E' = End
                     {
+                        
                         if (GetNodebyName(next_Node_name).isBlock() == false)
                         {
                             //no blocks
                             // GetNodeByTime == event Time -> current Node
                             // next_Node_name -> Next Node 
 
-                            //remove node and create new complete time
-                            Client client_move = GetNodebyTime(allNode.Min(r => r.eventTime)).getTemp();
-                            GetNodebyTime(allNode.Min(r => r.eventTime)).tempLeaveNode();
+                            //client(temp) leave current Node and new a new client to next node
+                            //and create new complete time in current Node
+                            Client client_move = GetNodebyTime(System.Min(r => r.eventTime)).getTemp();
+                            GetNodebyTime(System.Min(r => r.eventTime)).tempLeaveNode();
 
                             //add client to next node
                             GetNodebyName(next_Node_name).AddClient(client_move);
@@ -87,13 +89,13 @@ namespace Project
                    else
                    {
                         //leave the system
-                        GetNodebyTime(allNode.Min(r => r.eventTime)).tempLeaveNode();
+                        GetNodebyTime(System.Min(r => r.eventTime)).tempLeaveNode();
                     }
                 }
 
             }
 
-            int b = 0;
+            
             
             // init Node and name
             // all Node.time = int.max
