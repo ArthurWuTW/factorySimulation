@@ -6,3 +6,4 @@ C:\Users\arthurwutwks\Desktop\Project\Project\bin\Debug\Project.pdb
 C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.exe
 C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.pdb
 C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.Form1.resources

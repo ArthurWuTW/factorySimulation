@@ -14,7 +14,7 @@ namespace Project
         public double eventTime;
         int queue_length = 10;
         bool block = false;
-        //Client temp;
+        
 
         private Server GetIdleServer()
         {
@@ -106,7 +106,7 @@ namespace Project
 
                 // then quickly become busy
                 IdleServer.GiveCompleteTime(IdleServer.completeTime + getRandom());
-                IdleServer.idle = false;  //still busy
+                IdleServer.idle = false;
 
                 eventTime = Server_i.Min(c => c.completeTime);
 
