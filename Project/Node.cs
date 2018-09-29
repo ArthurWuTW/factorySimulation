@@ -34,14 +34,6 @@ namespace Project
                 return null;
         }
 
-
-        private double getRandom()
-        {
-            double mu = 10;
-            Random rnd = new Random();
-            return mu * rnd.NextDouble();
-        }
-
         public char getTempNextNodeName()
         {
             return Server_i.FirstOrDefault(c => c.completeTime == eventTime).temp.showNextFlowName();
