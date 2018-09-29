@@ -1,0 +1,8 @@
+C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.Properties.Resources.resources
+C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.csproj.GenerateResource.Cache
+C:\Users\arthurwutwks\Desktop\Project\Project\bin\Debug\Project.exe.config
+C:\Users\arthurwutwks\Desktop\Project\Project\bin\Debug\Project.exe
+C:\Users\arthurwutwks\Desktop\Project\Project\bin\Debug\Project.pdb
+C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.exe
+C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.pdb
+C:\Users\arthurwutwks\Desktop\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
