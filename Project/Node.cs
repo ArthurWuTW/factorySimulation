@@ -25,7 +25,13 @@ namespace Project
         private Queue<Client> GetleastQueue()
         {
             //return reference
-            return Queue_i.FirstOrDefault(c => c.Count < queue_length);
+            if (Queue_i.Min(a => a.Count) < queue_length)
+            {
+                //return Queue_i.FirstOrDefault(c => c.Count < queue_length);
+                return Queue_i.FirstOrDefault(c => c.Count == Queue_i.Min(a => a.Count));
+            }
+            else
+                return null;
         }
 
 
@@ -59,7 +65,7 @@ namespace Project
             if (GetIdleServer()!=null)
             {
                 Server IdleServer = GetIdleServer();
-                IdleServer.GiveCompleteTime(getRandom());
+                IdleServer.GiveCompleteTime(newclient.getTime());
                 IdleServer.idle = false;
                 IdleServer.temp = newclient;
                 IdleServer.temp.upDateTimeByNode(IdleServer.completeTime);
@@ -105,7 +111,7 @@ namespace Project
                 Server_i.FirstOrDefault(c => c.completeTime == eventTime).temp.removeFlowFirst();
 
                 // then quickly become busy
-                IdleServer.GiveCompleteTime(IdleServer.completeTime + getRandom());
+                IdleServer.GiveCompleteTime(IdleServer.completeTime);
                 IdleServer.idle = false;
 
                 eventTime = Server_i.Min(c => c.completeTime);

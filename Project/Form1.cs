@@ -42,7 +42,7 @@ namespace Project
 
             double stoptime = 30; //release module: stop relaease time 
             System.Add(new Node(2, 1, 'W')); // washing machine W
-            System.Add(new Node(1, 1, 'P')); // press machines P
+            System.Add(new Node(1, 2, 'P')); // press machines P
             System.Add(new Node(1, 1, 'A')); // assembly machines Y
             double gen_time=0.0; // release time
 

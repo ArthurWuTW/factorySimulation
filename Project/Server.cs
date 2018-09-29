@@ -14,6 +14,13 @@ namespace Project
 
         public Client temp;
 
+        private double getRandom()
+        {
+            double mu = 10;
+            Random rnd = new Random();
+            return mu * rnd.NextDouble();
+        }
+
         public Server()
         {
             idle = true;
@@ -21,7 +28,7 @@ namespace Project
 
         public void GiveCompleteTime(double time)
         {
-            completeTime = time;
+            completeTime = time + getRandom();
         } 
     }
 }
